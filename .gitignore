@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+.env.*
+keys.ini
+*.keys.ini
+
+# Local run output. Results worth keeping are copied into results/ and committed on purpose.
+logs/
+*.log
+*.db
+*.sqlite3
+
+# Throwaway investigation files
+scratch/
+
+# Editors, tools and operating systems
+.claude/settings.local.json
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

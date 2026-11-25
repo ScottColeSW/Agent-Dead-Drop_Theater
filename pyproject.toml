@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=70.1"]   # 70.1 builds wheels without the separate wheel package
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-dead-drop-theater"
+version = "0.1.0"
+description = "Two AI agents run a lemonade stand and a pie shop, and spy on each other"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Scott Cole" }]
+dependencies = []          # standard library only
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools]
+packages = ["deaddrop"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

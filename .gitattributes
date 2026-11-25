@@ -1,0 +1,5 @@
+# Store and check out text with LF on every machine, so file hashes in logs and results match.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.gif binary
