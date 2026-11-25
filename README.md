@@ -2,7 +2,7 @@
 
 **Underground espionage between a lemonade stand and a pie shop.** Two AI agents each run a small business and try to con the other one's shop helper. Every round is shown in full: what was sent, what the helper did, what it cost, and which defense would have mattered.
 
-**Status: project setup only.** Nothing is playable and nothing has been measured. The plan is in [docs/DESIGN.md](docs/DESIGN.md).
+**Status: first headless test.** A match runs in the terminal over one asset, the money. There is no live page yet. The plan is in [docs/DESIGN.md](docs/DESIGN.md) and the first test's bar is in [docs/FIRST-TEST.md](docs/FIRST-TEST.md).
 
 ## The two shops
 
@@ -24,7 +24,7 @@ Both shops run on the same numbers. Only the costumes differ.
 5. **Patch.** The shop's security chief buys, keeps or drops a defense.
 6. **Debrief.** A plain-language card says what worked and what it costs to stop.
 
-Score is real business earned, minus what was stolen, minus the cost of defenses. A shop that locks everything down sells nothing.
+Score is sales, minus refunds paid, lost business and the cost of defenses, plus whatever was conned out of the other shop. A shop that locks everything down turns away real customers.
 
 ## Safety
 
@@ -32,7 +32,7 @@ Everything happens in a made-up world. Agents get no shell, no network access an
 
 ## Setup
 
-Python 3.11 or later. [Ollama](https://ollama.com) will be needed once agents run live.
+Python 3.11 or later, standard library only. Live matches need [Ollama](https://ollama.com) running locally with the three models named below.
 
 ```powershell
 python -m venv .venv
@@ -49,6 +49,24 @@ python -m pip install -e ".[dev]"
 ```powershell
 python -m pytest -q
 ```
+
+## Play a match
+
+A quick demonstration with fixed rules in place of models:
+
+```powershell
+python -m deaddrop play --scripted
+```
+
+A live match, with a different model for each shop and a shared helper:
+
+```powershell
+python -m deaddrop play --lemonade llama3.1:8b --pie qwen2.5:7b --helper gemma3:4b
+```
+
+Add `--coach both` to give each shop's security chief and spymaster a coach that offers advice, and `--watch` to add the watcher, plain rules that record behavior and can hold odd refunds. Put two logs side by side with `python -m deaddrop compare`.
+
+Each match writes a log and a report to `logs/`. To rebuild a report, run `python -m deaddrop report` with the log's path. Live matches are slow when the models do not fit in graphics memory together, because each swap reloads a model.
 
 ## Related projects
 

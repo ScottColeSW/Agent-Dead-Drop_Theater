@@ -1,6 +1,6 @@
 # Design draft
 
-Status: a draft for discussion. Nothing here is built or measured.
+Status: a draft for discussion. The first headless test is built (see [FIRST-TEST.md](FIRST-TEST.md)). The live page, the secrets and the audience features are not.
 
 ## The idea
 
@@ -20,9 +20,9 @@ People write the world, the list of defenses, the referee and the debrief advice
 
 ## Scoring
 
-`score = real orders earned - money and secrets stolen - cost of defenses`
+`score = sales - refunds paid - lost business - cost of defenses + money conned out of the rival`
 
-Real orders arrive every round, so a defense that blocks them costs its owner. The balance between safety and business comes from the score, not from instructions to the agents.
+The first version has only money to steal. Secrets and supplier accounts come later. Real orders arrive every round, so a defense that blocks them costs its owner. The balance between safety and business comes from the score, not from instructions to the agents.
 
 The referee reads harm from the world state (did money move, did the recipe leave, did the order ship), never from an agent's account of what it did.
 
